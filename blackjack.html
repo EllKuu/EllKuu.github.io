@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>BlackJack</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>BlackJack</h1>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<span class="image main"><img src="images/BlackJackImages/BlackJack App.svg" alt="" /></span>
+								
+								<h2>What is BlackJack</h2>
+								<p> This app allows you to choose the number of decks to play with similar to how casinos 
+									use several decks in the shooter to prevent card counting and play 1 on 1 hands with the dealer. 
+									The game compares the players and dealers hands and determines the winner and keeps track of the players win and losses.</p>
+									<h2>Building BlackJack</h2>
+								<p> I built this blackjack game using programmatic auto layout constraints and MVC design.
+									The PlayGameViewController implements custom view protocols and handles the game logic for the players and dealers actions. 
+									The layout of the game view is made using stackviews and auto layout to position the stacks. The game logic was a little tricky to implement 
+									as handling the variable nature of the ace and where it was dealt in the hand changed the hands value. To overcome this I wrote and tested my 
+									calculation functions to handle these edge cases.   
+								</p>
+								<h2>Highlights</h2>
+								<ul>
+									<li>The PlayGameViewController implements the methods declared in the custom views and through protocols the body 
+										is written in the view controller.</li>
+									<li>The PlayGameViewController switches between views and the layouts are made using progammatic auto layout.</li>
+									<li>BlackJack game uses MVC design pattern to keep the model, the layout and the controller code separate.</li>
+								</ul>
+								
+
+								<section id="second" class="main special">
+									<header class="major">
+										<h2>BlackJack In Action</h2>
+									</header>
+									<video id="blackjackVideo" controls>
+										<source src="videos/BlackJackDemo.mp4" type="video/mp4">
+
+									</video>
+									<br>
+									<h2>Check out the Github</h2>
+									<a href="https://github.com/EllKuu/BlackJack" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+									
+									<!-- <div class="row">
+										<div class="column left" style="background-color:#aaa;">
+										  <h2>Column 1</h2>
+										  <span class="image main"><img src="images/BlackJackImages/BJ-Main.svg" alt="" /></span>
+										</div>
+										<div class="column right" style="background-color:#bbb;">
+										  <h2>Column 2</h2>
+										  <p>Some text..</p>
+										</div>
+									  </div>
+									  
+									  <br>
+
+									  <div class="row">
+										<div class="column right" style="background-color:#bbb;">
+										  <h2>Column 2</h2>
+										  <p>Some text..</p>
+										</div>
+										<div class="column left" style="background-color:#aaa;">
+											<h2>Column 1</h2>
+											<span class="image main"><img src="images/BlackJackImages/BJ-SelectDecks.svg" alt="" /></span>
+										  </div>
+									  </div>
+									  <br>
+
+									  <div class="row">
+										<div class="column left" style="background-color:#aaa;">
+										  <h2>Column 1</h2>
+										  <span class="image main"><img src="images/BlackJackImages/BJ-PlayView.svg" alt="" /></span>
+										</div>
+										<div class="column right" style="background-color:#bbb;">
+										  <h2>Column 2</h2>
+										  <p>Some text..</p>
+										</div>
+									  </div> -->
+
+								</section>
+								
+								<br>
+								<hr>
+			
+
+
+								<ul class="actions">
+									<li><a href="index.html" class="button">Back Home</a></li>
+								</ul>
+							</section>
+							
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
