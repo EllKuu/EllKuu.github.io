@@ -3861,6 +3861,7 @@ input, select, textarea {
   #pokedexVideo{
 	width: 25%;
 	height: auto;
+	border: 5px solid black;
   }
 
   /* hr line */
