@@ -31,15 +31,61 @@
 								
 								<h2>The PokeDex</h2>
 								<p> 
-									In Progress.
+									This app allows you to search for any Pokémon across the 8 generations. 
+									You can use the search function to find a Pokémon by name, element type or by region. 
+									Choosing a Pokémon will let you see more details about its evolutions and a set of 
+									interesting facts you can read.
+
 								</p>
 									<h2>Building a PokeDex</h2>
 								<p> 
-									In Progress.      
+									My goal for this app was to learn how to handle more complex JSON data, implement the MVVM design pattern 
+									and build the entire app programmatically focusing on writing structured and readable code.       
+								</p>
+								<h3>Working with the PokeAPI</h3>
+								<p>
+									The first step to building the PokeDex was to create the "Network Engine" class that would handle the API call
+									for the different endpoints I wanted to gather data from. While writing this class I used the Result type to return 
+									a success or failure case making it clearer in the code how a response to the API would be confirmed. 
+									<br><br>
+									I initially had difficulty understanding how to access the different endpoints as the JSON for the PokeAPI is nested within different
+									fields and objects. Eventually I was able to workout how to best organize the different endpoints and made separate functions
+									for each specific endpoint I was targeting. This made it easier when calling for the different data points in the view controllers. 
+									<br><br>
+									I also learned more about GCD as I explored how to handle calling the different endpoints and found how session.dataTask pushes 
+									the work to a background thread which I then needed to bring back to the main thread to see my results. While I didn't end up using 
+									GCD to setup my own dispatch groups I did experiment quite a bit while building out my network calls. 
+									<br><br>
+									Overall writing and implementing
+									my "Network Engine" class helped me learn how to use the Result type for cleaner network calls and explore GCD. 
+
+								</p>
+								<h3>Building the UI</h3>
+								<p>
+									My goal for building the UI was to learn how to use the MVVM design pattern and build each view controller programmatically. 
+									The PokeDex has 3 view controllers, one is for the main view which displays all the pokemon in a collection view, another is 
+									for displaying an individual pokemon and facts in a table view and the last controller is part of the search controller which gives
+									the user category options they can select all laid out in another collection view. 
+									<br><br>
+									The main takeaway I learned from implementing the MVVM pattern 
+									was separating my data into its own struct and formatting it within the initialization of the object. Upon creating the object I could then 
+									declare it as a variable with the structs type in my custom view classes for the different collection and table views and only have to worry 
+									about how to layout the information in the view. 
+
 								</p>
 								<h2>Highlights</h2>
 								<ul>
-									<li>In Progress</li>
+									<li>Created a "Network Engine" class to handle the API call using the Result type in the functions to make handling the 
+										response more readable. 
+									</li>
+									<li>
+										The UI of the app was made programmatically with a focus on the MVVM design pattern and writing the code in each class in a
+										structured manner for easier readability. 
+									</li>
+									<li>
+										The app implements a custom search controller that gives category choices laid out in a collection view that translates the chosen 
+										option as text to the search bar for filtering. The search controller also allows for searching by the Pokemon's name, type or region. 
+									</li>
 								</ul>
 								
 
