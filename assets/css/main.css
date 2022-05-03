@@ -3864,10 +3864,11 @@ input, select, textarea {
 	border: 5px solid black;
   }
 
+
   #letterSlidesVideo{
 	width: 25%;
 	height: auto;
-	border: 4px solid black;
+	border: 5px solid black;
   }
 
   /* hr line */
