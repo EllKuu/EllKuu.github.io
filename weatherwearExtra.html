@@ -104,7 +104,7 @@
                     <li>
                         The CLLocation object is saved to a local variable and used by two methods "lookUpCurrentLocation()" and "saveLocationsToUserDefaults().
                         The first function uses the location data to create an annotation and then adds the pin to the map. The second function saves the coordinate 
-                        data to Userdefaults as part of an array so previously dropped pins can be readded to the map when loaded.  
+                        data to UserDefaults as part of an array so previously dropped pins can be re-added to the map when loaded.  
                         "
                     </li>
                     <br>
@@ -204,7 +204,7 @@
                         The function handles this by checking if the "filteredClothingItems" array is not empty. A non empty array signals that the user is in a filtered state.  
                         A loop is used to check which items have been selected and the items index path in the filtered array is appended to the
                         "deleteAtIndexPaths" array. It is also removed from the "filteredClothingItems" array to show visually the item was removed. 
-                        Behind the scenes all the items indexes have been collected in a local array which is sorted and looped through to delete the items from core data and resave the context. 
+                        Behind the scenes all the items indexes have been collected in a local array which is sorted and looped through to delete the items from core data and re-save the context. 
                         The ClothingVC can then be reloaded by calling "fetchItems()" and the selection array "dictionarySelectedIndexPath" can be reset. 
                     </li>
                   </ul>
@@ -237,11 +237,35 @@
                   <ul class="two-table">
                     <li>
                         In order to add items to core data users must create clothing item objects by filling in all the details
-                        in the AddItemVC. This custom table view is designed to be a custom form that will be used for adding new items adding
+                        in the AddItemVC. This table view is designed to be a custom form that will be used for adding new items and
                         updating existing items. 
                     </li>
                     <br>
-                    <li>UITableView</li>
+                    <li>
+                        The table view uses custom cells to capture text input and uses radio buttons. The category and season 
+                        detail cells both use radio buttons and implement a protocol-delegate pattern for custom behavior.  
+                    </li>
+                    <br>
+                    <li>
+                        The category cell delegate function "didTapCategoryButton()" (line 371 in Github) checks which button 
+                        is the sender, sets all other buttons to false and assigns the text to the clothing category property. This 
+                        ensures only 1 option can be selected for the category. 
+                    </li>
+                    <br>
+                    <li>
+                        The season cell delegate function "didTapButton()" (line 386 in Github) allows for multiple buttons to be checked. 
+                        In order to save the details for the seasons the function adds any checked buttons text property to an array. 
+                        The seasons array must only contain unique values. The function achieves this by checking when a radio button 
+                        is set to true it will add the season to the array and when its false it will check if that season is already in the array 
+                        and remove it if it is found. By default the radio buttons start off in the "false" state so by using the ! operator 
+                        in the check statement it will be executed when the button is set to true. 
+                    </li>
+                    <br>
+                    <li>
+                        Once all fields in the form have been filled the "saveItem()" function (line 146 in Github) can be triggered. 
+                        It goes through and checks that all fields been filled and saves the item to core data. If there are missing fields 
+                        an alert showing a message lets the user know to fill in all the fields. 
+                    </li>
                   </ul>
                 </ul>
                 <h2>Check out the Github</h2>

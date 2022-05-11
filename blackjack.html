@@ -31,25 +31,26 @@
 								
 								<h2>What is BlackJack</h2>
 								<p> 
-									This app allows you to choose the number of decks to play with similar to how casinos use several decks 
-									in the shooter to prevent card counting and play a 1 on 1 hand with the dealer. 
-									The game compares the player's and dealers' hands and determines 
-									the winner and keeps track of the player's wins and losses.
+									In casinos, the card shoe is set up with numerous decks making it harder to count cards. Choose the number of decks in 
+									the card shoe and go 1 on 1 with the dealer playing hands of blackjack and see how many hands you can win.
 								</p>
-									<h2>Building BlackJack</h2>
-								<p> 
-									I built this blackjack game using programmatic auto layout constraints and MVC design.
-                                    The PlayGameViewController implements custom view protocols and handles the game logic for the player's and dealer's actions. 
-                                    The layout of the game view is made using stackviews and auto-layout to position the stacks. The game logic was a little tricky to implement as handling the variable nature of the ace and where it was dealt in the hand changed the hand's value. To overcome this I wrote and tested my 
-                                    calculation functions to handle these edge cases.      
-								</p>
-								<h2>Highlights</h2>
-								<ul>
-									<li>The PlayGameViewController implements the methods declared in the custom views and through protocols the body is written in the view controller.</li>
-									<li>The PlayGameViewController switches between views and the layouts are made using a programmatic auto layout.</li>
-									<li>BlackJack game uses an MVC design pattern to keep the model, the layout, and the controller code separate.</li>
-									<li>This app was accepted onto the app store for iOS devices only and was a way for me to learn about Apples app submission criteria.</li>
+									<h2>Feature highlights</h2>
+									<ul>
+										<li>BlackJack game uses an MVC design pattern to keep the card model, the view layouts, and the view controller logic separate.</li>
+										<li>The PlayGameViewController implements the methods declared in the custom views and through the protocol-delegate pattern.</li>
+										<li>The PlayGameViewController switches between views and the layouts are made using a programmatic auto layout.</li>
+										<li>Custom algorithm design for calculating the winner of each hand.</li>
+										
+										
+									</ul>
+								
+								
+								
+								<ul class="actions">
+									<li><a href="blackjackExtra.html" class="button">Extra Details</a></li>
 								</ul>
+
+								<hr>
 								<h2>Check it out on the iOS App Store as <strong>"No Gamble BlackJack"</strong>.</h2>
 								
 								
