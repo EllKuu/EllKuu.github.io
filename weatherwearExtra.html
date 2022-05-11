@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Weather Wear Extra Details</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <h1>Weather Wear Extra Details</h1>
+      </header>
+
+      <!-- Main -->
+      <div id="main">
+        <!-- Content -->
+        <section id="content" class="main">
+          <!-- <span class="image main"><img src="images/WeatherWearImages/App Showcase.png" alt="" /></span> -->
+
+          <section id="second" class="main special">
+            <header class="major">
+              <h2>Weather Wear in Action</h2>
+            </header>
+            <video id="weatherWearVideo" controls>
+              <source src="videos/WeatherWearDemo.mp4" type="video/mp4" />
+            </video>
+          </section>
+          <br />
+          <hr>
+
+          <section id="second" class="main special">
+            <div class="row">
+              <div class="column left" style="background-color: rgb(255, 255, 255)">
+                <br />
+                <span class="image main"
+                  ><img src="images/WeatherWearImages/WW-weatherVC.svg" alt=""
+                /></span>
+               
+              </div>
+              <div class="column right" style="background-color: rgb(255, 255, 255)">
+                <h2>Weather ViewController</h2>
+                <ul class="two-table-text-configure">
+                  <h4>Setting up the data</h4>
+                  <ul class="two-table">
+                    
+                    
+
+                    <li>
+                        Populating the weather data for this view controller starts with the "openMap()" function (line 87 in Github).
+                    </li>
+                    <br>
+                    <li>
+                        The "openMap()" function is the action used to instantiate the MapViewController (MapVC). When the user chooses a location 
+                        from the MapVC it triggers a callback function "callBackCoordinates()" from the WeatherVC and provides the latitude and longitude coordinates. 
+                    </li>
+                    <br>
+                    <li>
+                        The coordinates are used to get the weather data from the OpenWeatherAPI and return a weather object. That object is then 
+                        passed to the "weatherDataDetup()" (line 101 in Github) which sets up the data properties that will populate the table view. 
+                    </li>
+                    <br>
+                    <li>
+                        The result as seen in the image is a header view detailing the current days weather for the location and below 
+                        is the 7 day outlook data. 
+                    </li>
+                  </ul>
+                </ul>
+                <h2>Check out the Github</h2>
+				<a href="https://github.com/EllKuu/WeatherWear/blob/master/WeatherWear/Controllers/Weather%20VCs/WeatherViewController.swift" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+              </div>
+            </div>
+
+            <br />
+            <hr>
+
+            <div class="row">
+              <div class="column right" style="background-color: rgb(255, 255, 255)">
+                <h2>Map ViewController</h2>
+                <ul class="two-table-text-configure">
+                  
+                  <h4>Marking locations on the map</h4>
+                  <ul class="two-table">
+                    <li>
+                        The MapVC is where the user can use a long tap gesture to drop pins on the map. 
+                        It starts from the "dropPin()" function (line 56 in Github) where the long tap is converted into a 
+                        coordinate from the map. That coordinate is then used to create a CLLocation object that contains the 
+                        latitude and longitude information.
+                    </li>
+                    <br>
+                    <li>
+                        The CLLocation object is saved to a local variable and used by two methods "lookUpCurrentLocation()" and "saveLocationsToUserDefaults().
+                        The first function uses the location data to create an annotation and then adds the pin to the map. The second function saves the coordinate 
+                        data to Userdefaults as part of an array so previously dropped pins can be readded to the map when loaded.  
+                        "
+                    </li>
+                    <br>
+                    <li>
+                        With the location pins placed on the map the user can tap on a pin and bring up an MKAnnotationView which 
+                        presents a delete option and an option to get the weather data for the location (line 195-230 in Github). The right accessory button triggers the 
+                        call back coordinates function thats called from the WeatherVC to get the weather data.   
+                    </li>
+                    
+                  </ul>
+                </ul>
+                <h2>Check out the Github</h2>
+				<a href="https://github.com/EllKuu/WeatherWear/blob/master/WeatherWear/Controllers/Weather%20VCs/MapViewController.swift" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+              </div>
+
+              <div class="column left" style="background-color: rgb(255, 255, 255)">
+                <br />
+                <span class="image main"
+                  ><img src="images/WeatherWearImages/WW-mapVC.svg" alt=""
+                /></span>
+              </div>
+            </div>
+
+            <br />
+            <hr>
+
+            <div class="row">
+              <div class="column left" style="background-color: rgb(255, 255, 255)">
+                <br />
+                <span class="image main"
+                  ><img
+                    src="images/WeatherWearImages/WW-clothingSuggestionsVC.svg"
+                    alt=""
+                /></span>
+              </div>
+              <div class="column right" style="background-color: rgb(255, 255, 255)">
+                <h2>Clothing Suggestions ViewController</h2>
+                <ul class="two-table-text-configure">
+                  <h4>Showing clothing items in the category cells</h4>
+                  <ul class="two-table">
+                    <li>The ClothingSuggestionsVC is shown when the user taps on a table cell to show the weather 
+                        for a day of the week. The controller uses a table view layout and its cells use a horizontal 
+                        collection view to display the clothing items. 
+                    </li>
+                    <br>
+                    <li>
+                        The clothing items are brought into the controller by fetching them from core data. 
+                        Items are filtered by setting the season property via the function "sortItemsBySeason()" (line 43 in GitHub). 
+                        The function is called when the user selects a cell in the WeatherVC and the temperature is passed as a parameter.  
+                    </li>
+                    <br>
+                    <li>
+                        With the season property set, the table view delegate function "cellForRowAt" uses the array of clothing items
+                        and filters on the clothing season and clothing category fields (line 79-115 in Github). The result is a table view
+                        that displays only clothing items that match the specific temperature of the day based on the clothing items details. 
+
+                    </li>
+                  </ul>
+                </ul>
+                <h2>Check out the Github</h2>
+				<a href="https://github.com/EllKuu/WeatherWear/blob/master/WeatherWear/Controllers/Weather%20VCs/ClothingSuggestionsTableViewController.swift" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+              </div>
+            </div>
+
+            <br />
+            <hr>
+
+            <div class="row">
+              <div class="column right" style="background-color: rgb(255, 255, 255)">
+                <h2>Clothes ViewController</h2>
+                <ul class="two-table-text-configure">
+                  <h4>Deleting items from the collection</h4>
+                  <ul class="two-table">
+                    <li>
+                        The ClothesVC is a collection view of all the clothing items that have been saved to core data.
+                        In this controller the user can add items, search for items and perform a multi-select delete function.     
+                    </li>
+                    <br>
+                    <li>
+                        A "Select" button is placed at the top left of the controller which enables the delete feature by switching 
+                        the mode (line 34 in Github). When the mode is set to "select" the items in the collection view can be highlighted for deletion. 
+                    </li>
+                    <br>
+                    <li>
+                        The deletion works in both a filtered and unfiltered state. This is done by adding any selected items 
+                        to a dictionary of [IndexPath:Bool], so when a item is selected its value is set to true. 
+                    </li>
+                    <br>
+                    <li>
+                        With the selected items values set to true the "deleteItem()" function (line 165 in Github) can be triggered by a button tap. 
+                        The delete function works by collecting an array of index paths that will be deleted from clothing items in core data. 
+                        
+                    </li>
+                    <br>
+                    <li>
+                        The tricky part for the delete function is handling the case where the user has filtered the collection view and is deleting from a filtered state. 
+                        The function handles this by checking if the "filteredClothingItems" array is not empty. A non empty array signals that the user is in a filtered state.  
+                        A loop is used to check which items have been selected and the items index path in the filtered array is appended to the
+                        "deleteAtIndexPaths" array. It is also removed from the "filteredClothingItems" array to show visually the item was removed. 
+                        Behind the scenes all the items indexes have been collected in a local array which is sorted and looped through to delete the items from core data and resave the context. 
+                        The ClothingVC can then be reloaded by calling "fetchItems()" and the selection array "dictionarySelectedIndexPath" can be reset. 
+                    </li>
+                  </ul>
+                </ul>
+                <h2>Check out the Github</h2>
+				<a href="https://github.com/EllKuu/WeatherWear/blob/master/WeatherWear/Controllers/Clothing%20VCs/ClothesViewController.swift" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+              </div>
+              <div class="column left" style="background-color: rgb(255, 255, 255)">
+                <br />
+                <span class="image main"
+                  ><img src="images/WeatherWearImages/WW-clothingVC.svg" alt=""
+                /></span>
+              </div>
+            </div>
+
+            <br />
+            <hr>
+
+            <div class="row">
+              <div class="column left" style="background-color: rgb(255, 255, 255)">
+                <br />
+                <span class="image main"
+                  ><img src="images/WeatherWearImages/WW-addItemVC.svg" alt=""
+                /></span>
+              </div>
+              <div class="column right" style="background-color: rgb(255, 255, 255)">
+                <h2>Add Item ViewController</h2>
+                <ul class="two-table-text-configure">
+                  <h4>Adding clothing items via a custom form</h4>
+                  <ul class="two-table">
+                    <li>
+                        In order to add items to core data users must create clothing item objects by filling in all the details
+                        in the AddItemVC. This custom table view is designed to be a custom form that will be used for adding new items adding
+                        updating existing items. 
+                    </li>
+                    <br>
+                    <li>UITableView</li>
+                  </ul>
+                </ul>
+                <h2>Check out the Github</h2>
+				<a href="https://github.com/EllKuu/WeatherWear/blob/master/WeatherWear/Controllers/Clothing%20VCs/AddItemTableViewController.swift" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+              </div>
+            </div>
+          </section>
+
+          <hr />
+
+          <ul class="actions">
+            <li><a href="weatherwear.html" class="button">Previous</a></li>
+            <li><a href="index.html" class="button">Back Home</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <section>
+          <!-- <h2>Aliquam sed mauris</h2>
+							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+							<ul class="actions">
+								<li><a href="index.html" class="button">Back Home</a></li>
+							</ul>
+						</section>
+						<section>
+							<h2>Etiam feugiat</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
+								<dt>Phone</dt>
+								<dd>(000) 000-0000 x 0000</dd>
+								<dt>Email</dt>
+								<dd><a href="#">information@untitled.tld</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul> -->
+        </section>
+        <p class="copyright">
+          &copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.
+        </p>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

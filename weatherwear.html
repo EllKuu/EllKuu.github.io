@@ -34,19 +34,27 @@
 									The app works by letting you select your location by dropping a pin on the map and getting the 7-day outlook for that location. You can then select a day of the 
 									week and see what clothing would be suitable for that day's weather and temperature. 
 								</p>
-								<h2>Building Weather Wear</h2>
-								<p>This was the first solo app I built after learning the basics of Swift and common design principles from building smaller sandbox projects. 
-									Throughout this project, I challenged myself to dig deeper into how to structure my swift files, how to handle optionals, 
-									and identify possible memory leaks. I also researched how to build custom buttons that behave like radio buttons and checkboxes for my custom form. 
-									Overall I succeeded in creating my vision for this app and applied my self-learning to this solo project. 
-								</p>
-								<h2>Highlights</h2>
+								<h2>Feature Highlights</h2>
 								<ul>
-									<li>Weather data received from OpenWeatherAPI using URLSession, JSONDecoder and mapped to a custom Weather Model.</li>
-									<li>The user chooses a location through the use MapKit and CoreLocation and the coordinates are used in the API call to get the weather data.</li>
-									<li>The user adds their clothing using a form made with a table view controller, custom buttons(radio and checkboxes), and input fields which are saved to core data as a clothing item.</li>
-									<li>Saved clothing items are shown in a collection view and searchable through the details the user inputted via the search controller.</li>
-									<li>All clothing items are saved in core data and presented to the user based on the day's temperature.</li>
+									<li>A Weather view controller shows the 7 day forecast using weather data received from OpenWeatherAPI. Creating a URLSession and JSONDecoder the data response is mapped to a weather model and used to populate the table cells.</li>
+									<br>
+									<li>A Map view controller allows the user to choose locations by dropping red pins on the map. Using MapKit and CoreLocation the coordinates of the pins are saved in UserDefaults and used in the API call to get the weather data.</li>
+									<br>
+									<li>The Clothing suggestion view controller uses a table view with a horizontal collection view for its table cells to display pictures of clothing items. The items shown are specific
+										to the temperature for the day and are filtered based on the season category. 
+									</li>
+									<br>
+									<li>A CRUD feature that lets a user catalog clothing items in the app. The user adds their clothing using a form made with a table view controller, custom buttons(radio and checkboxes), 
+										and input fields which are saved to core data as a clothing item.
+									</li>
+									<br>
+									<li>Saved clothing items are shown in a collection view and searchable through the details the user inputted via the search controller. Items can also be deleted through a multi-select 
+										and updated by populating the same form with prior details. 
+									</li>
+									
+								</ul>
+								<ul class="actions">
+									<li><a href="weatherwearExtra.html" class="button">Extra Details</a></li>
 								</ul>
 								
 
@@ -62,120 +70,7 @@
 									<h2>Check out the Github</h2>
 									<a href="https://github.com/EllKuu/WeatherWear" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
 									
-									<!-- <div class="row">
-										<div class="column left" style="background-color:#aaa;">
-											<br>
-										  	<span class="image main"><img src="images/WeatherWearImages/WW-weatherVC.svg" alt="" /></span>
-										</div>
-										<div class="column right" style="background-color:#bbb;">
-										  <h2>Weather ViewController</h2>
-										  <ul class="two-table-text-configure">
-											  <h4>Components Used</h4>
-											  <ul class="two-table">
-												  <li>UIViewController</li>
-												  <li>UITableView</li>
-											  </ul>
-											  <h4>Functionality</h4>
-											  <ul class="two-table">
-												  <li>The main table view loads the saved user location from UserDefaults</li>
-												  <li>Weather data is received from "OpenWeatherAPI"</li>
-												  <li>Map button in top right calls a callback function to get coordinates that is passed to weatherModel() function "getWeatherData" and 
-													  the result of the data call is sent to "weatherDataSetup" to show the data in the WeatherViewController </li>
-											  </ul>
-										  </ul>
-										</div>
-									  </div>
-									  
-									  <br>
-
-									  <div class="row">
-										<div class="column right" style="background-color:#bbb;">
-											<h2>Map ViewController</h2>
-											<ul class="two-table-text-configure">
-												<h4>Components Used</h4>
-												<ul class="two-table">
-													<li>UIGestureRecognizer to detect long press to drop pin on map</li>
-													<li>LocationMarker which is an annotation containing information of the location </li>
-													<li>Userdefaults to save any chosen locations in an array and reloads the pins to the map</li>
-													<li>MKAnnotationView has left and right call out accessory to either remove the annotation or use that annotation to get weather data</li>
-												</ul>
-												<h4>Functionality</h4>
-												<ul class="two-table">
-													<li>Long press gesture to drop pins on the map</li>
-													<li>Dropped pins saved to user defaults</li>
-													<li>Save the chosen location to user defaults</li>
-													<li>Get information from the Core Location data</li>
-												</ul>
-  
-											</ul>
-										</div>
-
-										<div class="column left" style="background-color:#aaa;">
-											<br>
-											<span class="image main"><img src="images/WeatherWearImages/WW-mapVC.svg" alt="" /></span>
-										  </div>
-									  </div>
-									  <br>
-
-									  <div class="row">
-										<div class="column left" style="background-color:#aaa;">
-										  <br>
-										  <span class="image main"><img src="images/WeatherWearImages/WW-clothingSuggestionsVC.svg" alt="" /></span>
-										</div>
-										<div class="column right" style="background-color:#bbb;">
-											<h2>Suggestions ViewController</h2>
-											<ul class="two-table-text-configure">
-												<h4>Components Used</h4>
-												<ul class="two-table">
-													<li>UIViewController</li>
-													<li>UITableView</li>
-												</ul>
-  
-											</ul>
-										</div>
-									  </div>
-
-									  <br>
-
-									  <div class="row">
-										<div class="column right" style="background-color:#bbb;">
-											<h2>Clothing Collection ViewController</h2>
-											<ul class="two-table-text-configure">
-												<h4>Components Used</h4>
-												<ul class="two-table">
-													<li>UIViewController</li>
-													<li>UITableView</li>
-												</ul>
-  
-											</ul>
-										</div>
-										<div class="column left" style="background-color:#aaa;">
-											<br>
-											<span class="image main"><img src="images/WeatherWearImages/WW-clothingVC.svg" alt="" /></span>
-										  </div>
-									  </div>
-
-									  <br>
-
-									  <div class="row">
-										<div class="column left" style="background-color:#aaa;">
-										  <br>
-										  <span class="image main"><img src="images/WeatherWearImages/WW-addItemVC.svg" alt="" /></span>
-										</div>
-										<div class="column right" style="background-color:#bbb;">
-											<h2>Add Item ViewController</h2>
-											<ul class="two-table-text-configure">
-												<h4>Components Used</h4>
-												<ul class="two-table">
-													<li>UIViewController</li>
-													<li>UITableView</li>
-												</ul>
-  
-											</ul>
-										</div>
-									  </div>
-
-								</section> -->
+								</section>
 								
 								<hr>
 
