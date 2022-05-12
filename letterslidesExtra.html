@@ -46,9 +46,8 @@
             <div class="row">
               <div class="column left" style="background-color: rgb(255, 255, 255)">
                 <br />
-                <span class="image main"
-                  ><img src="images/WeatherWearImages/WW-weatherVC.svg" alt=""
-                /></span>
+                <span class="image main"><img src="images/LettserSlideImages/letterslides2.svg" alt=""/></span>
+                <span class="image main"><img src="images/LettserSlideImages/letterslides1.svg" alt=""/></span>
                
               </div>
               <div class="column right" style="background-color: rgb(255, 255, 255)">
@@ -70,11 +69,23 @@
 										<li>Created a large list of words and definitions using a custom script to create a csv file to load into the game.</li>
                     <br>
 										<li>Implemented a dictionary feature to show the growing list of completed puzzles. 
-											I used a recycling scroll view for improved performance when displaying a large amount of text. </li>
-                    
-
-                   
+											I used a recycling scroll view for improved performance when displaying a large amount of text. 
+                    </li>                   
                   </ol>
+                  <br>
+                  <h4>Randomizing the shuffling</h4>
+                  <p>
+                    To randomly shuffle the puzzle requires counting the number of "inversions" that have occurred. 
+                    In a sliding puzzle an inversion is defined as a mis-ordering of the tiles. 
+                    This means the tiles in the array have been swapped from their correct positions.
+                    <br><br>
+                    The shuffling occurs in a do-while loop and stops when the inversion count is an even number. 
+                    To get the number of inversions requires counting the swaps that have taken place.
+                    This is done by taking the array and using two pointers at the first and second index often denoted as "i" and "j". 
+                    Using a nested loop, the pointers are compared and an inversion is counted if the index at "i" is greater then "j". 
+                    The loop will go over the entire array and compare "i" and "j" for each index adding up the inversion count. After the loop has completed
+                    and the inversion count is an even number, the 3x3 puzzle is solvable and the shuffling can stop.  
+                  </p>
                 </ul>
                 
               </div>
