@@ -46,10 +46,7 @@
             <div class="row">
               <div class="column left" style="background-color: rgb(255, 255, 255)">
                 <br />
-                <!-- <span class="image main"><img src="images/PokedexImages/pokedex3.svg" alt=""/></span> -->
-                <span class="image main"><img src="images/PokedexImages/pokedex2.svg" alt=""/></span>
-                <span class="image main"><img src="images/PokedexImages/pokedex5.svg" alt=""/></span>
-                <!-- <span class="image main"><img src="images/PokedexImages/pokedex4.svg" alt=""/></span> -->
+                <span class="image main"><img src="images/PokedexImages/pokedex3.svg" alt=""/></span>
                
               </div>
               <div class="column right" style="background-color: rgb(255, 255, 255)">
@@ -62,11 +59,12 @@
 
                   </ul>
 
-                  <h2><a href="https://github.com/EllKuu/pokedex/blob/main/pokedex/Network/NetworkEngine.swift" class="icon brands fa-github alt"><span class="label">GitHub</span></a>  Working with the PokeAPI </h2>
+                  <h2>  Working with the PokeAPI </h2>
                   
 								<p>
-									The first step to building the PokeDex was to create 4 functions for the "Network Engine" class that would handle the API call
-									for the different endpoints (see Github for NetworkEngine class). The PokeAPI's JSON response has the URLs for different end points nested in the properties. 
+									The first step to building the PokeDex was to create 4 functions for the 
+                  <a href="https://github.com/EllKuu/pokedex/blob/main/pokedex/Network/NetworkEngine.swift">"Network Engine"</a> class that would handle the API call
+									for the different endpoints. The PokeAPI's JSON response has the URLs for different end points nested in the properties. 
                   
                   <br><br>
                   The class functions take in an @escaping closure as a parameter and uses a "Result" type. The purpose for @escaping is to inform
@@ -78,50 +76,84 @@
                  
 				
 									<br>
+                  <script src="https://gist.github.com/EllKuu/6b229393bb885693cb49af493306ccc7.js"></script>
 									
-								<h2>	<a href="https://github.com/EllKuu/pokedex/blob/main/pokedex/Views/ViewControllers/PokemonDetailsViewController.swift" class="icon brands fa-github alt"><span class="label">GitHub</span></a>  Building the UI</h2>
-								<p>
-									I built the PokeDex using the MVVM design pattern and designed each view controller programmatically. 
-                  The images on the left show the "PokemonDetailsViewController" which contains a table view with details about the Pokemon. 
-                  The data for the table starts from the "fetchData()" function (line 173 in Github) which makes the API call using the 
-                  "Network Engine" methods and returns a response. If successful the responses will contain the data for the "PokemonSpeciesDetails" and
-                  "PokemonEvolutionDetails" which are both model objects. 
+							
 
-                  <br><br>
-                  <h3>Registering custom table view cells</h3>
-                  Once the API call has completed, the table view is registered with its custom table cell views (line 141 in Github). 
-                  Both the custom table cells (<a href="https://github.com/EllKuu/pokedex/blob/main/pokedex/Views/View/PokemonFlavorTextTableViewCell.swift"><span class="label">PokemonFlavorTextTableCell</span></a> 
-                  and <a href="https://github.com/EllKuu/pokedex/blob/main/pokedex/Views/View/PokemonEvolutionsTableViewCell.swift"><span class="label">PokemonEvolutionsTableCell</span></a>)
-                  have a view model property that is set in the "cellForRowAt" function (line 303 in Github). 
 
-                  <br><br>
-                  <h3>Setting up the Pokemon fact cell</h3>
-                  The "PokemonFlavorTextViewModel" is initialized with the "pokemonSpeciesDetails" object (line 316 in Github) and sets up the different 
-                  facts about the pokemon. The <a href="https://github.com/EllKuu/pokedex/blob/main/pokedex/ViewModel/PokemonFlavorTextViewModel.swift"><span class="label">"PokemonFlavorTextViewModel"s</span></a> init function modifies the fact array to only show 
-                  facts written in english. It also has a "mutating" method that helps cycle the different facts in the array. 
-                  This method is called from the "PokemonFlavorTextTableViewCell" <a href="https://github.com/EllKuu/pokedex/blob/main/pokedex/Views/View/PokemonFlavorTextTableViewCell.swift"><span class="label">(line 68)</span></a> and uses the protocol-delegate pattern 
-                  with the "PokemonDetailsVC" to detect the button tap and propagate a new fact up to where the protocol method was implemented.
 
-                  <br><br>
-                  <h3>Setting up the Pokemon evolution cell</h3>
-                  Setting up the evolution chain required traversing the PokemonEvolution objects chain property using recursion.
-                  The outcome is to fill an array of PokemonEvolutionHierarchy objects that contain the name and evolution level for each pokemon in the chain.
-                  <br><br>
-                  The way this works is by calling “getEvolutionNames(evolutionChain: )” method passing in the PokemonEvolutions.Chain property (line 207 in Github). 
-                  This property contains the evolution chain for the particular pokemon and is the starting point for extracting the name and level.
-                  <br><br>
+
+                </ul>
+                
+			
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="column left" style="background-color: rgb(255, 255, 255)">
+                <br />
+                
+                <span class="image main"><img src="images/PokedexImages/pokedex2.svg" alt=""/></span>
+                <span class="image main"><img src="images/PokedexImages/pokedex5.svg" alt=""/></span>
+               
+              </div>
+              <div class="column right" style="background-color: rgb(255, 255, 255)">
+                
+                <ul class="two-table-text-configure">
                   
-                  The first pokemon in the chain is added to the evolution array.
-                  and a check on the property “evolves_to” sees if the array is not empty which will trigger the recursion and call the “traverseChain(chainLink: )” method passing in the PokemonEvolutions.ChainLink array (line 216 in Github).
-                  <br><br>
-                  The traverseChain method goes through the chainlink creating a PokemonHierarchy object of a name and evolution level and adding the object to the evolutions array. 
-                  The recursion stops once the chainlink property is empty meaning there is no more chain to follow. 
-                  <br><br>
-                  The result is an array containing objects of a pokemon name and evolution level that can be used for the Evolution section of the tableview. 
-                  The pokemonEvolutions array is also used to retrieve the sprite images. Looping over the array and matching the name property in the main pokemonList allows for getting the image from the URL. 
-                  With the PokemonEvolutions and pokemonImages arrays set, the table view section for the evolution chain can now be created using the MVVM pattern to initialize the cell with a “PokemonEvolutionsViewModel” using the arrays (line 327 in Github). 
+                  <ul class="two-table">
+                    
+                    
 
-								</p>
+                  </ul>
+
+                  <h2>Getting the data</h2>
+                  <p>
+                    I built the PokeDex using the MVVM design pattern and designed each view controller programmatically. 
+                    The images on the left show the "PokemonDetailsViewController" which contains a table view with details about the Pokemon. 
+                    The data for the table starts from the "fetchData()" function which makes the API call using the 
+                    "Network Engine" methods and returns a response. If successful the responses will contain the data for the "PokemonSpeciesDetails" and
+                    "PokemonEvolutionDetails" which are both model objects. 
+                    <br>
+                    <script src="https://gist.github.com/EllKuu/6012dad90d020e9119883bfd79def691.js"></script>
+
+                    <br>
+                    
+                    <!-- <h3>Setting up the Pokemon fact cell</h3>
+                    The "PokemonFlavorTextViewModel" is initialized with the "pokemonSpeciesDetails" object (line 316 in Github) and sets up the different 
+                    facts about the pokemon. The <a href="https://github.com/EllKuu/pokedex/blob/main/pokedex/ViewModel/PokemonFlavorTextViewModel.swift"><span class="label">"PokemonFlavorTextViewModel"s</span></a> init function modifies the fact array to only show 
+                    facts written in english. It also has a "mutating" method that helps cycle the different facts in the array. 
+                    This method is called from the "PokemonFlavorTextTableViewCell" <a href="https://github.com/EllKuu/pokedex/blob/main/pokedex/Views/View/PokemonFlavorTextTableViewCell.swift"><span class="label">(line 68)</span></a> and uses the protocol-delegate pattern 
+                    with the "PokemonDetailsVC" to detect the button tap and propagate a new fact up to where the protocol method was implemented. -->
+        
+                    
+                    <h3>Setting up the Pokemon evolution cell</h3>
+                    Setting up the evolution chain required traversing the PokemonEvolution objects chain property using recursion.
+                    The outcome is to fill an array of PokemonEvolutionHierarchy objects that contain the name and evolution level for each pokemon in the chain.
+                    <br><br>
+                    Using the “getEvolutionNames(evolutionChain: )” method (line 31) and passing in the PokemonEvolutions.Chain property. 
+                    starts the extraction of the name and level.
+                    <br><br>
+                    
+                    The entry in the chain is added to the evolution array and a check on the property “evolves_to” will trigger the “traverseChain(chainLink: )” method if the array is not empty. 
+                    <br><br>
+                    The traverseChain method goes through the chainlink creating a PokemonHierarchy object of a name and evolution level and adding the object to the evolutions array. 
+                    The recursion stops once the chainlink property is empty meaning there is no more chain to follow. 
+                    <br><br>
+                    The result is an array containing objects of a pokemon name and evolution level that can be used for the Evolution section of the table-view.  
+                    
+  
+                   <br><br>
+                   <script src="https://gist.github.com/EllKuu/db81553f82f9d68655aee24bb9a9f53a.js"></script>
+  
+                  </p>
+                 
+				
+									<br>
+                 
+									
+								
+					
 
 
 

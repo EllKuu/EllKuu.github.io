@@ -75,17 +75,17 @@
                   <br>
                   <h4>Randomizing the shuffling</h4>
                   <p>
-                    To randomly shuffle the puzzle requires counting the number of "inversions" that have occurred. 
-                    In a sliding puzzle an inversion is defined as a mis-ordering of the tiles. 
-                    This means the tiles in the array have been swapped from their correct positions.
+                    To shuffle the 3x3 sliding puzzle, the tiles positions in the array are randomly swapped. To determine if the puzzle
+                    is solvable requires counting the number of "inversions" that have occurred. 
+                    The shuffling occurs in a do-while loop and stops when the inversion count is an even number.
                     <br><br>
-                    The shuffling occurs in a do-while loop and stops when the inversion count is an even number. 
-                    To get the number of inversions requires counting the swaps that have taken place.
-                    This is done by taking the array and using two pointers at the first and second index often denoted as "i" and "j". 
-                    Using a nested loop, the pointers are compared and an inversion is counted if the index at "i" is greater then "j". 
-                    The loop will go over the entire array and compare "i" and "j" for each index adding up the inversion count. After the loop has completed
-                    and the inversion count is an even number, the 3x3 puzzle is solvable and the shuffling can stop.  
-                  </p>
+                     
+                    To calculate the number of inversions the "GetInversions()" function uses a nested for loop to compare 
+                    the tiles numbers. If the tiles number before is larger than the tiles number after than an inversion 
+                    has occurred and the count increases by 1. The function returns the count once the array has been 
+                    fully looped over.  
+                    <br>
+                    <script src="https://gist.github.com/EllKuu/0c572edd99cbf06ec44182b8721819c3.js"></script>
                 </ul>
                 
               </div>

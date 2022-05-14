@@ -56,15 +56,8 @@
                 <ul class="two-table-text-configure">
                   <h4>Calculating the value of each hand</h4>
                   <ul class="two-table">
-                    
                     <li>
-                        The process for calculating each hand follows the pattern of dealing a card, calculating the hands value and determining the hand results. 
-                    </li>
-                    <br>
-                    <li>
-                      Calculating the value of each hand starts at the "dealHand()" function (line 168 in Github). It starts by
-                      dealing out the first 4 cards in alternating fashion. The cards for both the player and dealer are being kept track 
-                      of in a double ended queue. The reason for using this data structure is for handling the "Ace" which can have a value of 
+                      I calculate the value of a hand by using a double ended queue. The reason for using this data structure is for handling the "Ace" which can have a value of 
                       1 or 11. If an "Ace" is dealt it is placed at the end of the queue while all other cards are inserted at the front. 
                       This particular detail for appending the "Ace" at the end of the queue is important when it comes to looping over the 
                       queue to calculate the hand total. By adding up all the cards before the "Aces" determines whether the "Ace" needs to be valued as 
@@ -72,25 +65,15 @@
                     </li>
                    <br>
                    <li>
-                     As cards are dealt and added to the hands a "calculatePlayersHand()" (line 273 in Github) and "calculateDealersHand()" (line 301 in Github) are called. 
-                     The role of these functions is to calculate the total value of the hand by adding up all the card values in the queue. 
+                     The "calculatePlayersHand()" function is called every time a card is added to the hand. 
+                     The role of the function is to calculate the total value of the hand by adding up all the card values in the queue. 
                      The edge case arises when the total value of a hand is greater than 21. If the hand has "Aces" then the total value is 
-                     subtracted by 11 and the "Aces" alternate value of 1 is added. This gives the hand a new total below 21 and its value can 
-                     be passed to a result function to determine the outcome. 
+                     subtracted by 11 and the "Aces" alternate value of 1 is added. If the result of the hand is below 21 after treating the "Ace"
+                     as a value of 1 then the hand total becomes the new result.  
                    </li>
                    <br>
-                   <li>
-                     Both the calculation functions for the player and dealer perform the same logic. The slight difference is in the "calculateDealersHand()" where there
-                     is an extra case that will convert an "Ace" if the total value of the dealers hand is less than or equal to the players hand total. The 
-                     dealer is obligated to win the hand or bust which is why this extra case is needed. 
-                   </li>
-                   <br>
-                   <li>
-                     Once the player and dealer have stayed their turns and the hand totals have been calculated, a function call is made to 
-                     the "playersHandSortedResults()" (line 341 in GitHub) and "dealersHandSortedResults()" (line 366 in Github). 
-                     These functions use a control block to determine the result of the hand and present a message by calling the "gameInformation()" (line 424 in Github)
-                     function. 
-                   </li>
+                    
+                    <script src="https://gist.github.com/EllKuu/2a94ea1c310a6905ef403b7e01ac134f.js"></script>
                   </ul>
                 </ul>
                 <h2>PlayGameVC - Github</h2>
